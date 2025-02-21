@@ -1,9 +1,19 @@
 import { Col, Container, Row } from "react-bootstrap";
 import AlbumGallery from "./AlbumGallery";
+import PlayerSection from "./PlayerSection";
+import TopBar from "./TopBar";
+import { useState } from "react";
 
 const MainSection = () => {
+  const [selectedTrack, setSelectedTrack] = useState(null);
+
+  const handleTrackSelect = (track) => {
+    setSelectedTrack(track);
+  };
+
   return (
     <Container fluid>
+      <TopBar />
       <Row>
         <main className="col-12 col-md-9 offset-md-3 mainPage">
           <Row>
@@ -16,11 +26,12 @@ const MainSection = () => {
             </Col>
           </Row>
 
-          <AlbumGallery title="Rock Classics" artistName="Queen" />
-          <AlbumGallery title="Pop Culture" artistName="Eminem" />
-          <AlbumGallery title="Hip Hop" artistName="Katy Perry" />
+          <AlbumGallery title="Rock Classics" artistName="Queen" onTrackSelect={handleTrackSelect} />
+          <AlbumGallery title="Pop Culture" artistName="Eminem" onTrackSelect={handleTrackSelect} />
+          <AlbumGallery title="Hip Hop" artistName="Katy Perry" onTrackSelect={handleTrackSelect} />
         </main>
       </Row>
+      <PlayerSection selectedTrack={selectedTrack} />
     </Container>
   );
 };

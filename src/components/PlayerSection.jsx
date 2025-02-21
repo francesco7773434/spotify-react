@@ -4,7 +4,11 @@ import playImg from "../assets/playerbuttons/play.png";
 import nextImg from "../assets/playerbuttons/next.png";
 import repeatImg from "../assets/playerbuttons/repeat.png";
 
-const PlayerSection = () => {
+const PlayerSection = ({ selectedTrack }) => {
+  if (!selectedTrack) {
+    return null;
+  }
+
   return (
     <div className="container-fluid fixed-bottom bg-container pt-1">
       <div className="row h-100">
@@ -28,6 +32,12 @@ const PlayerSection = () => {
                   <img src={repeatImg} alt="repeat" />
                 </a>
               </div>
+
+              <div className="mt-3 p-0">
+                <h3 className="text-light">{selectedTrack.title}</h3>
+                <p className="text-ligh ">{selectedTrack.artist.name}</p>
+              </div>
+
               <div className="progress mt-3">
                 <div role="progressbar"></div>
               </div>

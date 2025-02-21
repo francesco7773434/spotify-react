@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
-const AlbumGallery = ({ title, artistName }) => {
+const AlbumGallery = ({ title, artistName, onTrackSelect }) => {
   const [tracks, setTracks] = useState([]);
 
   const fillMusicSection = async (artistName) => {
@@ -32,7 +32,7 @@ const AlbumGallery = ({ title, artistName }) => {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
             {tracks.map((track) => (
               <Col key={track.id} className="col mb-4">
-                <div className="track-card">
+                <div className="track-card" onClick={() => onTrackSelect(track)}>
                   <img src={track.album.cover} alt={track.title} className="img-fluid" />
                   <p>{track.title}</p>
                 </div>
