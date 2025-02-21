@@ -1,16 +1,29 @@
-import { GALLERY_TRACK } from "../actions";
-
-const initialstate = {
-  content: [],
+const initialState = {
+  queenTracks: [],
+  eminemTracks: [],
+  katyPerryTracks: [],
 };
 
-const AlbumGalleryReducer = (state = initialstate, action) => {
+const AlbumGalleryReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GALLERY_TRACK:
+    case "GALLERY_TRACK_QUEEN":
       return {
         ...state,
-        content: action.payload,
+        queenTracks: action.payload,
       };
+
+    case "GALLERY_TRACK_EMINEM":
+      return {
+        ...state,
+        eminemTracks: action.payload,
+      };
+
+    case "GALLERY_TRACK_KATY_PERRY":
+      return {
+        ...state,
+        katyPerryTracks: action.payload,
+      };
+
     default:
       return state;
   }

@@ -7,7 +7,19 @@ const AlbumGallery = ({ title, artistName, TrackSelect }) => {
   const [likeTracks, setLikeTracks] = useState([]);
 
   const dispatch = useDispatch();
-  const tracks = useSelector((state) => state.tracks.content);
+  const tracks = useSelector((state) => {
+    switch (artistName) {
+      case "Queen":
+        return state.tracks.queenTracks;
+      case "Eminem":
+        return state.tracks.eminemTracks;
+      case "Katy Perry":
+        return state.tracks.katyPerryTracks;
+      default:
+        return [];
+    }
+  });
+
   console.log(tracks);
 
   const toggleLike = (trackId) => {

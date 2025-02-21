@@ -33,8 +33,8 @@ const MainSection = () => {
           </Row>
 
           <AlbumGallery title="Rock Classics" artistName="Queen" TrackSelect={handleTrackSelect} />
-          <AlbumGallery title="Pop Culture" artistName="Eminem" TrackSelect={handleTrackSelect} />
-          <AlbumGallery title="Hip Hop" artistName="Katy Perry" TrackSelect={handleTrackSelect} />
+          <AlbumGallery title="Pop Culture" artistName="Katy Perry" TrackSelect={handleTrackSelect} />
+          <AlbumGallery title="Hip Hop" artistName="Eminem" TrackSelect={handleTrackSelect} />
         </main>
       </Row>
       <PlayerSection selectedTrack={selectedTrack} />
