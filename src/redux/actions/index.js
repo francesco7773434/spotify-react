@@ -20,13 +20,13 @@ export const MusicSectionAction = (artistName) => {
             dispatch({ type: "GALLERY_TRACK_KATY_PERRY", payload: topTracks });
             break;
           default:
-            console.error("Artist not found");
+            console.error("artista non trovato");
             break;
         }
 
         dispatch({ type: GALLERY_TRACK, payload: topTracks });
       } else {
-        throw new Error("Error in fetching songs");
+        throw new Error("Errore nella fetch");
       }
     } catch (err) {
       console.error("error", err);
