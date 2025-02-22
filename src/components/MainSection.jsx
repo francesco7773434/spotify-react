@@ -5,8 +5,15 @@ import TopBar from "./TopBar";
 
 import { useDispatch, useSelector } from "react-redux";
 import { SELECT_TRACK } from "../redux/actions";
+import { useState } from "react";
+import SearchResults from "./SearchResults";
 
 const MainSection = () => {
+  const [artistName, setArtistName] = useState("");
+
+  const handleSearchChange = (event) => {
+    setArtistName(event.target.value);
+  };
   const selectedTrack = useSelector((state) => state.selectedTrack.content);
   const dispatch = useDispatch();
 
@@ -19,7 +26,7 @@ const MainSection = () => {
 
   return (
     <Container fluid>
-      <TopBar />
+      <TopBar onSearchChange={handleSearchChange} />
       <Row>
         <main className="col-12 col-md-9 offset-md-3 mainPage">
           <Row>
@@ -31,6 +38,7 @@ const MainSection = () => {
               <a href="#">DISCOVER</a>
             </Col>
           </Row>
+          <SearchResults title="Search Results" artistName={artistName} />
 
           <AlbumGallery title="Rock Classics" artistName="Queen" TrackSelect={handleTrackSelect} />
           <AlbumGallery title="Pop Culture" artistName="Katy Perry" TrackSelect={handleTrackSelect} />

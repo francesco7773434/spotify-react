@@ -1,7 +1,10 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import logo from "../assets/logo/logo.png";
 
-const TopBar = () => {
+const TopBar = ({ onSearchChange }) => {
+  const handleInputChange = (event) => {
+    onSearchChange(event);
+  };
   return (
     <div className="container-fluid">
       <div className="row">
@@ -37,7 +40,7 @@ const TopBar = () => {
                     </li>
                     <li>
                       <div className="input-group mt-3">
-                        <input type="text" className="form-control" placeholder="Search" aria-label="Search" />
+                        <input type="text" className="form-control" placeholder="Search" aria-label="Search" onChange={handleInputChange} />
                         <div className="input-group-append">
                           <button className="btn btn-outline-secondary btn-sm h-100">GO</button>
                         </div>
