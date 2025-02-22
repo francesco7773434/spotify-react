@@ -5,7 +5,7 @@ import { Col, Row } from "react-bootstrap";
 const SearchResults = ({ title, artistName }) => {
   const [tracks, setTracks] = useState([]);
 
-  const fillMusicSection = async (artistName) => {
+  const searchMusicSection = async (artistName) => {
     try {
       let response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artistName}`);
 
@@ -14,16 +14,16 @@ const SearchResults = ({ title, artistName }) => {
 
         setTracks(data.slice(0, 4));
       } else {
-        throw new Error("Error in fetching songs");
+        throw new Error("Errore nella fetch");
       }
-    } catch (err) {
-      console.log("error", err);
+    } catch (errorr) {
+      console.log("error", errorr);
     }
   };
 
   useEffect(() => {
     if (artistName) {
-      fillMusicSection(artistName);
+      searchMusicSection(artistName);
     }
   }, [artistName]);
 
